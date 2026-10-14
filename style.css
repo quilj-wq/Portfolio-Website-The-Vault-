@@ -1,0 +1,963 @@
+* {
+  box-sizing: border-box;
+}
+
+
+/* --------------------
+   WHOLE WEBSITE
+-------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background-color: #fdccea;
+
+  background-image: url("images/Purple Checker Pattern.jpg");
+  background-repeat: repeat;
+  background-position: 0 0;
+
+  color: white;
+
+  font-family: Arial, sans-serif;
+
+  animation: moveBackground 35s linear infinite;
+}
+
+
+/* --------------------
+   MOVING BACKGROUND
+-------------------- */
+
+@keyframes moveBackground {
+
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 200px 0;
+  }
+
+}
+
+
+/* --------------------
+   CONTENT FRAME
+-------------------- */
+
+.content-frame {
+  width: 820px;
+  max-width: 92%;
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  border-left: 10px solid #4b236f;
+  border-right: 10px solid #4b236f;
+
+  background-color: #f9e3f1;
+}
+
+
+/* --------------------
+   BANNER
+-------------------- */
+
+.banner {
+  width: 100%;
+
+  margin: 30px auto 0;
+  padding: 20px 25px;
+
+  background-color: #f9e3f1;
+  color: #3b1f5c;
+
+  border-top: 2px solid #4b236f;
+  border-bottom: 2px solid #4b236f;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 180px;
+}
+
+.banner-text {
+  text-align: left;
+}
+
+.banner-text h1 {
+  margin: 0;
+  font-size: 48px;
+}
+
+.banner-text h3 {
+  margin: 10px 0 0;
+  font-weight: normal;
+}
+
+.vault-logo {
+  width: 130px;
+  height: 130px;
+
+  object-fit: contain;
+
+  display: block;
+  flex-shrink: 0;
+}
+
+
+/* --------------------
+   NAVIGATION BAR
+-------------------- */
+
+.nav-buttons {
+  width: 100%;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.nav-buttons a {
+  padding: 12px 0;
+
+  text-align: center;
+  text-decoration: none;
+
+  color: white;
+  background-color: #4b236f;
+
+  border-right: 1px solid #4b236f;
+  border-bottom: 2px solid #4b236f;
+}
+
+.nav-buttons a:first-child {
+  border-left: 1px solid #4b236f;
+}
+
+.nav-buttons a:hover {
+  background-color: #7440a3;
+}
+
+
+/* Current page */
+
+.nav-buttons a.active {
+  background-color: white;
+  color: #4b236f;
+}
+
+.nav-buttons a.active:hover {
+  background-color: #eeeeee;
+}
+
+
+/* --------------------
+   MAIN CONTENT
+-------------------- */
+
+main {
+  width: 100%;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 30px;
+
+  background-color: #f9e3f1;
+  color: #3b1f5c;
+}
+
+main h2 {
+  margin-top: 0;
+}
+
+
+/* --------------------
+   BOOK PAGE
+-------------------- */
+
+.book-entry {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 25px;
+
+  padding: 25px 0;
+
+  border-bottom: 2px solid #4b236f;
+}
+
+.book-cover {
+  width: 180px;
+  height: 250px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+
+  background-color: #f9e3f1;
+}
+
+.book-cover:hover {
+  opacity: 0.85;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.book-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  font-size: 24px;
+}
+
+.book-info p {
+  margin: 7px 0;
+
+  line-height: 1.5;
+}
+
+
+/* --------------------
+   ART PAGE
+-------------------- */
+
+.art-entry {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 25px;
+
+  padding: 25px 0;
+
+  border-bottom: 2px solid #4b236f;
+}
+
+.art-image {
+  width: 180px;
+  height: 180px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+}
+
+.art-image:hover {
+  opacity: 0.85;
+}
+
+.art-info {
+  flex: 1;
+}
+
+.art-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  font-size: 24px;
+}
+
+.art-info p {
+  margin: 7px 0;
+
+  line-height: 1.5;
+}
+
+
+/* --------------------
+   GAME PAGE
+-------------------- */
+
+.game-entry {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 25px;
+
+  padding: 25px 0;
+
+  border-bottom: 2px solid #4b236f;
+}
+
+.game-cover {
+  width: 180px;
+  height: 180px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+
+  background-color: #f9e3f1;
+}
+
+.game-cover:hover {
+  opacity: 0.85;
+}
+
+.game-info {
+  flex: 1;
+}
+
+.game-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  font-size: 24px;
+}
+
+.game-info p {
+  margin: 7px 0;
+
+  line-height: 1.5;
+}
+
+
+/* --------------------
+   ART POPUP WINDOW
+-------------------- */
+
+.art-window {
+  display: none;
+
+  position: fixed;
+
+  top: 100px;
+  left: 100px;
+
+  width: 500px;
+  height: 400px;
+
+  min-width: 300px;
+  min-height: 250px;
+
+  background-color: #f9e3f1;
+
+  border: 6px solid #4b236f;
+
+  z-index: 1000;
+
+  resize: both;
+  overflow: auto;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+/* --------------------
+   POPUP TOP BAR
+-------------------- */
+
+.art-window-bar {
+  height: 42px;
+
+  background-color: #4b236f;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-left: 12px;
+
+  cursor: move;
+
+  user-select: none;
+}
+
+
+/* --------------------
+   POPUP BUTTONS
+-------------------- */
+
+.window-buttons {
+  height: 100%;
+
+  display: flex;
+}
+
+.window-buttons button {
+  width: 45px;
+  height: 100%;
+
+  border: none;
+  border-left: 2px solid #4b236f;
+
+  background-color: white;
+  color: #4b236f;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.window-buttons button:hover {
+  background-color: #eeeeee;
+}
+
+
+/* --------------------
+   ART POPUP CONTENT
+-------------------- */
+
+.art-window-content {
+  width: 100%;
+  height: calc(100% - 42px);
+
+  padding: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: auto;
+
+  background-color: #f9e3f1;
+}
+
+.art-window-content img {
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+}
+
+
+/* --------------------
+   BOOK POPUP WINDOW
+-------------------- */
+
+.book-window {
+  width: 500px;
+  height: auto;
+
+  min-width: 320px;
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+
+/* --------------------
+   BOOK POPUP CONTENT
+-------------------- */
+
+.book-window-content {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #f9e3f1;
+
+  overflow: hidden;
+}
+
+
+/* --------------------
+   BOOK PAGE AREA
+-------------------- */
+
+.book-page-area {
+  padding: 15px 15px 5px 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background-color: #f9e3f1;
+}
+
+.book-page-area img {
+  max-width: 90%;
+  max-height: 500px;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* --------------------
+   BOOK PAGE CONTROLS
+-------------------- */
+
+.book-page-controls {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 5px 12px 12px 12px;
+
+  background-color: #f9e3f1;
+}
+
+.page-button {
+  width: 50px;
+  height: 40px;
+
+  background-color: white;
+  color: #4b236f;
+
+  border: 2px solid #4b236f;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.page-button:hover {
+  background-color: #eeeeee;
+}
+
+
+/* Disabled page buttons */
+
+.page-button:disabled {
+  opacity: 0.35;
+
+  cursor: default;
+
+  background-color: white;
+}
+
+.page-button:disabled:hover {
+  background-color: white;
+}
+
+.page-number {
+  min-width: 100px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+  color: #4b236f;
+
+  border: 2px solid #4b236f;
+
+  font-size: 16px;
+}
+
+
+/* --------------------
+   GAME POPUP WINDOW
+-------------------- */
+
+.game-window {
+  width: 500px;
+  height: auto;
+
+  min-width: 320px;
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+
+/* --------------------
+   GAME POPUP CONTENT
+-------------------- */
+
+.game-window-content {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #f9e3f1;
+
+  overflow: hidden;
+}
+
+
+/* --------------------
+   GAME BOX ART AREA
+-------------------- */
+
+.game-boxart-area {
+  padding: 15px 15px 5px 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background-color: #f9e3f1;
+}
+
+.game-boxart-area img {
+  max-width: 90%;
+  max-height: 500px;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* --------------------
+   GAME PLAY CONTROLS
+-------------------- */
+
+.game-play-controls {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5px 12px 12px 12px;
+
+  background-color: #f9e3f1;
+}
+
+
+/* --------------------
+   PLAY BUTTON
+-------------------- */
+
+.game-play-button {
+  min-width: 140px;
+  height: 44px;
+
+  padding: 0 25px;
+
+  background-color: white;
+  color: #4b236f;
+
+  border: 2px solid #4b236f;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.game-play-button:hover {
+  background-color: #eeeeee;
+}
+
+
+/* --------------------
+   FULLSCREEN MODE
+-------------------- */
+
+.art-window.fullscreen {
+  top: 0 !important;
+  left: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  resize: none;
+}
+
+
+/* --------------------
+   FULLSCREEN BOOK
+-------------------- */
+
+.book-window.fullscreen .book-window-content {
+  height: calc(100vh - 42px);
+}
+
+.book-window.fullscreen .book-page-area {
+  flex: 1;
+
+  min-height: 0;
+}
+
+.book-window.fullscreen .book-page-area img {
+  max-width: 95%;
+  max-height: 100%;
+}
+
+
+/* --------------------
+   FULLSCREEN GAME
+-------------------- */
+
+.game-window.fullscreen .game-window-content {
+  height: calc(100vh - 42px);
+}
+
+.game-window.fullscreen .game-boxart-area {
+  flex: 1;
+
+  min-height: 0;
+}
+
+.game-window.fullscreen .game-boxart-area img {
+  max-width: 95%;
+  max-height: 100%;
+}
+
+
+/* --------------------
+   CUSTOM SCROLLBAR
+-------------------- */
+
+.scroll-track {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: 8px;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.25);
+
+  display: none;
+}
+
+.scroll-thumb {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 100%;
+
+  background-color: #b18add;
+
+  border-radius: 10px;
+}
+
+
+/* --------------------
+   MOBILE
+-------------------- */
+
+@media (max-width: 600px) {
+
+  .content-frame {
+    max-width: 100%;
+
+    border-left: 6px solid #4b236f;
+    border-right: 6px solid #4b236f;
+  }
+
+
+  .banner {
+    padding: 18px;
+  }
+
+
+  .banner-text h1 {
+    font-size: 36px;
+  }
+
+
+  .banner-text h3 {
+    font-size: 16px;
+  }
+
+
+  .vault-logo {
+    width: 90px;
+    height: 90px;
+  }
+
+
+  .nav-buttons a {
+    padding: 10px 2px;
+
+    font-size: 13px;
+  }
+
+
+  main {
+    padding: 20px;
+  }
+
+
+
+  /* --------------------
+     BOOK MOBILE
+  -------------------- */
+
+  .book-entry {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+
+  .book-cover {
+    width: 100%;
+    height: auto;
+
+    max-height: 320px;
+  }
+
+
+
+  /* --------------------
+     ART MOBILE
+  -------------------- */
+
+  .art-entry {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+
+  .art-image {
+    width: 100%;
+    height: auto;
+
+    max-height: 300px;
+  }
+
+
+
+  /* --------------------
+     GAME MOBILE
+  -------------------- */
+
+  .game-entry {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+
+  .game-cover {
+    width: 100%;
+    height: auto;
+
+    max-height: 300px;
+  }
+
+
+
+  /* --------------------
+     GENERAL POPUP MOBILE
+  -------------------- */
+
+  .art-window {
+    top: 50px;
+    left: 5%;
+
+    width: 90%;
+    height: 60vh;
+
+    min-width: 0;
+    min-height: 250px;
+  }
+
+
+
+  /* --------------------
+     BOOK POPUP MOBILE
+  -------------------- */
+
+  .book-window {
+    width: 90%;
+    height: auto;
+
+    min-width: 0;
+    min-height: 0;
+  }
+
+
+  .book-page-area img {
+    max-width: 95%;
+    max-height: 420px;
+  }
+
+
+
+  /* --------------------
+     GAME POPUP MOBILE
+  -------------------- */
+
+  .game-window {
+    width: 90%;
+    height: auto;
+
+    min-width: 0;
+    min-height: 0;
+  }
+
+
+  .game-boxart-area img {
+    max-width: 95%;
+    max-height: 420px;
+  }
+
+
+
+  /* --------------------
+     POPUP BUTTONS MOBILE
+  -------------------- */
+
+  .window-buttons button {
+    width: 40px;
+  }
+
+
+
+  /* --------------------
+     BOOK CONTROLS MOBILE
+  -------------------- */
+
+  .book-page-controls {
+    gap: 8px;
+  }
+
+
+  .page-button {
+    width: 45px;
+  }
+
+
+  .page-number {
+    min-width: 90px;
+  }
+
+
+
+  /* --------------------
+     GAME PLAY BUTTON MOBILE
+  -------------------- */
+
+  .game-play-button {
+    min-width: 130px;
+    height: 44px;
+  }
+
+}

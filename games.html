@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>The Vault - Games</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="content-frame">
+
+
+    <!-- --------------------
+         BANNER
+    -------------------- -->
+
+    <header class="banner">
+
+      <div class="banner-text">
+
+        <h1>
+          The Vault
+        </h1>
+
+        <h3>
+          Joseph Quillo
+        </h3>
+
+      </div>
+
+      <div style="text-align: center;">
+      <p><big><b>Portfolio Project</b></big></p>
+      </div>
+
+      <img
+        class="vault-logo"
+        src="images/The_Vault.png"
+        alt="Vault door"
+      >
+
+    </header>
+
+
+
+    <!-- --------------------
+         NAVIGATION
+    -------------------- -->
+
+    <nav class="nav-buttons">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="books.html">
+        Books
+      </a>
+
+      <a href="art.html">
+        Art
+      </a>
+
+      <a
+        class="active"
+        href="games.html"
+      >
+        Games
+      </a>
+
+      <a href="portfolio.html">
+        Portfolio
+      </a>
+
+    </nav>
+
+
+
+    <!-- --------------------
+         GAMES
+    -------------------- -->
+
+    <main>
+
+      <h2>
+        Games
+      </h2>
+
+
+
+      <!-- --------------------
+           TETRIS
+      -------------------- -->
+
+      <section class="game-entry">
+
+        <img
+          src="Games/Tetris_NES_Boxart.jpg"
+          alt="Tetris"
+          class="game-cover"
+
+          data-title="Tetris"
+          data-boxart="Games/Tetris_NES_Boxart.jpg"
+          data-rom="Games/Tetris.nes"
+        >
+
+
+        <div class="game-info">
+
+          <h3>
+            Tetris
+          </h3>
+
+
+          <p>
+            <strong>
+              System:
+            </strong>
+
+            Nintendo Entertainment System
+          </p>
+
+
+          <p>
+            <strong>
+              Year:
+            </strong>
+
+            1989
+          </p>
+
+
+          <p>
+            <strong>
+              Genre:
+            </strong>
+
+            Puzzle
+          </p>
+
+
+          <p>
+            A classic puzzle game where falling blocks
+            are arranged to create complete horizontal
+            lines and earn points.
+          </p>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- --------------------
+           PAC-MAN
+      -------------------- -->
+
+      <section class="game-entry">
+
+        <img
+          src="Games/Pac-Man_NES_Boxart.webp"
+          alt="Pac-Man"
+          class="game-cover"
+
+          data-title="Pac-Man"
+          data-boxart="Games/Pac-Man_NES_Boxart.webp"
+          data-rom="Games/Pac-Man.nes"
+        >
+
+
+        <div class="game-info">
+
+          <h3>
+            Pac-Man
+          </h3>
+
+
+          <p>
+            <strong>
+              System:
+            </strong>
+
+            Nintendo Entertainment System
+          </p>
+
+
+          <p>
+            <strong>
+              Year:
+            </strong>
+
+            1988
+          </p>
+
+
+          <p>
+            <strong>
+              Genre:
+            </strong>
+
+            Maze / Arcade
+          </p>
+
+
+          <p>
+            A maze game where Pac-Man collects pellets
+            while avoiding ghosts and clearing each
+            stage.
+          </p>
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       GAME POPUP WINDOW
+  =================================================== -->
+
+  <div
+    class="art-window game-window"
+    id="gameWindow"
+  >
+
+
+    <!-- --------------------
+         TOP BAR
+    -------------------- -->
+
+    <div
+      class="art-window-bar"
+      id="gameWindowBar"
+    >
+
+      <span id="gameWindowTitle">
+        Game
+      </span>
+
+
+      <div class="window-buttons">
+
+        <button
+          type="button"
+          id="gameRestoreButton"
+          title="Restore window"
+        >
+          ❐
+        </button>
+
+
+        <button
+          type="button"
+          id="gameFullscreenButton"
+          title="Fullscreen"
+        >
+          □
+        </button>
+
+
+        <button
+          type="button"
+          id="gameCloseButton"
+          title="Close"
+        >
+          X
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- --------------------
+         GAME CONTENT
+    -------------------- -->
+
+    <div class="game-window-content">
+
+
+      <!-- BOX ART AREA -->
+
+      <div class="game-boxart-area">
+
+        <img
+          id="gamePopupImage"
+          src=""
+          alt="Selected game box art"
+        >
+
+      </div>
+
+
+
+      <!-- --------------------
+           PLAY CONTROL
+      -------------------- -->
+
+      <div class="game-play-controls">
+
+        <button
+          type="button"
+          class="game-play-button"
+          id="gamePlayButton"
+        >
+          PLAY
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- --------------------
+       CUSTOM SCROLLBAR
+  -------------------- -->
+
+  <div
+    class="scroll-track"
+    id="scrollTrack"
+  >
+
+    <div
+      class="scroll-thumb"
+      id="scrollThumb"
+    ></div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       GAME POPUP JAVASCRIPT
+  =================================================== -->
+
+  <script>
+
+
+    /* --------------------
+       GET GAME COVERS
+    -------------------- */
+
+    const gameCovers =
+      document.querySelectorAll(
+        ".game-cover"
+      );
+
+
+
+    /* --------------------
+       GET POPUP ELEMENTS
+    -------------------- */
+
+    const gameWindow =
+      document.getElementById(
+        "gameWindow"
+      );
+
+
+    const gamePopupImage =
+      document.getElementById(
+        "gamePopupImage"
+      );
+
+
+    const gameWindowTitle =
+      document.getElementById(
+        "gameWindowTitle"
+      );
+
+
+    const gamePlayButton =
+      document.getElementById(
+        "gamePlayButton"
+      );
+
+
+    const gameCloseButton =
+      document.getElementById(
+        "gameCloseButton"
+      );
+
+
+    const gameFullscreenButton =
+      document.getElementById(
+        "gameFullscreenButton"
+      );
+
+
+    const gameRestoreButton =
+      document.getElementById(
+        "gameRestoreButton"
+      );
+
+
+    const gameWindowBar =
+      document.getElementById(
+        "gameWindowBar"
+      );
+
+
+
+    /* --------------------
+       CURRENT GAME INFO
+    -------------------- */
+
+    let currentGameRom = "";
+
+
+
+    /* ==================================================
+       OPEN GAME
+    =================================================== */
+
+    gameCovers.forEach(function (cover) {
+
+      cover.addEventListener(
+        "click",
+        function () {
+
+
+          /* Get game title */
+
+          const gameTitle =
+            cover.dataset.title;
+
+
+          /* Get game box art */
+
+          const gameBoxArt =
+            cover.dataset.boxart;
+
+
+          /* Save ROM path for later */
+
+          currentGameRom =
+            cover.dataset.rom;
+
+
+          /* Change popup title */
+
+          gameWindowTitle.textContent =
+            gameTitle;
+
+
+          /* Show selected box art */
+
+          gamePopupImage.src =
+            gameBoxArt;
+
+
+          gamePopupImage.alt =
+            gameTitle +
+            " box art";
+
+
+          /* Open popup */
+
+          gameWindow.style.display =
+            "block";
+
+        }
+      );
+
+    });
+
+
+
+    /* ==================================================
+       PLAY BUTTON
+       No emulator functionality yet
+    =================================================== */
+
+    gamePlayButton.addEventListener(
+      "click",
+      function () {
+
+        /*
+          EMULATOR CODE WILL GO HERE LATER.
+
+          currentGameRom contains the selected
+          game's ROM path.
+
+          Example:
+
+          Games/Tetris.nes
+
+          or
+
+          Games/Pac-Man.nes
+        */
+
+      }
+    );
+
+
+
+    /* ==================================================
+       CLOSE
+    =================================================== */
+
+    gameCloseButton.addEventListener(
+      "click",
+      function () {
+
+        gameWindow.style.display =
+          "none";
+
+      }
+    );
+
+
+
+    /* ==================================================
+       FULLSCREEN
+    =================================================== */
+
+    gameFullscreenButton.addEventListener(
+      "click",
+      function () {
+
+        gameWindow.classList.add(
+          "fullscreen"
+        );
+
+      }
+    );
+
+
+
+    /* ==================================================
+       RESTORE
+    =================================================== */
+
+    gameRestoreButton.addEventListener(
+      "click",
+      function () {
+
+
+        gameWindow.classList.remove(
+          "fullscreen"
+        );
+
+
+        gameWindow.style.width =
+          "500px";
+
+
+        gameWindow.style.height =
+          "auto";
+
+
+        gameWindow.style.top =
+          "100px";
+
+
+        gameWindow.style.left =
+          "100px";
+
+      }
+    );
+
+
+
+    /* ==================================================
+       DRAG WINDOW
+    =================================================== */
+
+    let gameDragging = false;
+
+    let gameMouseStartX = 0;
+
+    let gameMouseStartY = 0;
+
+    let gameWindowStartX = 0;
+
+    let gameWindowStartY = 0;
+
+
+
+    gameWindowBar.addEventListener(
+      "mousedown",
+      function (event) {
+
+
+        /* Don't drag when clicking buttons */
+
+        if (
+          event.target.tagName ===
+          "BUTTON"
+        ) {
+
+          return;
+
+        }
+
+
+        /* Don't drag while fullscreen */
+
+        if (
+          gameWindow.classList.contains(
+            "fullscreen"
+          )
+        ) {
+
+          return;
+
+        }
+
+
+        gameDragging = true;
+
+
+        gameMouseStartX =
+          event.clientX;
+
+
+        gameMouseStartY =
+          event.clientY;
+
+
+        gameWindowStartX =
+          gameWindow.offsetLeft;
+
+
+        gameWindowStartY =
+          gameWindow.offsetTop;
+
+      }
+    );
+
+
+
+    document.addEventListener(
+      "mousemove",
+      function (event) {
+
+
+        if (!gameDragging) {
+
+          return;
+
+        }
+
+
+        const movementX =
+          event.clientX -
+          gameMouseStartX;
+
+
+        const movementY =
+          event.clientY -
+          gameMouseStartY;
+
+
+        gameWindow.style.left =
+          gameWindowStartX +
+          movementX +
+          "px";
+
+
+        gameWindow.style.top =
+          gameWindowStartY +
+          movementY +
+          "px";
+
+      }
+    );
+
+
+
+    document.addEventListener(
+      "mouseup",
+      function () {
+
+        gameDragging = false;
+
+      }
+    );
+
+
+
+    /* ==================================================
+       ESCAPE CLOSES WINDOW
+    =================================================== */
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key ===
+          "Escape"
+        ) {
+
+          gameWindow.style.display =
+            "none";
+
+        }
+
+      }
+    );
+
+
+  </script>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

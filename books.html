@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>The Vault - Books</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+  <div class="content-frame">
+
+
+    <!-- --------------------
+         BANNER
+    -------------------- -->
+
+    <header class="banner">
+
+      <div class="banner-text">
+
+        <h1>
+          The Vault
+        </h1>
+
+        <h3>
+          Joseph Quillo
+        </h3>
+
+        </div>
+
+        <div style="text-align: center;">
+        <p><big><b>Portfolio Project</b></big></p>
+        </div>
+
+      <img
+        class="vault-logo"
+        src="images/The_Vault.png"
+        alt="Vault door"
+      >
+
+    </header>
+
+
+
+    <!-- --------------------
+         NAVIGATION
+    -------------------- -->
+
+    <nav class="nav-buttons">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="books.html"
+      >
+        Books
+      </a>
+
+      <a href="art.html">
+        Art
+      </a>
+
+      <a href="games.html">
+        Games
+      </a>
+
+      <a href="portfolio.html">
+        Portfolio
+      </a>
+
+    </nav>
+
+
+
+    <!-- --------------------
+         BOOKS
+    -------------------- -->
+
+    <main>
+
+      <h2>
+        Books
+      </h2>
+
+
+
+      <!-- --------------------
+           THE TELL-TALE HEART
+      -------------------- -->
+
+      <section class="book-entry">
+
+        <img
+          src="Books/The Tell-Tale Heart_Cover.png"
+          alt="The Tell-Tale Heart"
+          class="book-cover"
+
+          data-cover="Books/The Tell-Tale Heart_Cover.png"
+          data-page-name="The Tell-Tale Heart_Page"
+          data-pages="7"
+        >
+
+
+        <div class="book-info">
+
+          <h3>
+            The Tell-Tale Heart
+          </h3>
+
+
+          <p>
+            <strong>
+              Author:
+            </strong>
+
+            Edgar Allan Poe
+          </p>
+
+
+          <p>
+            <strong>
+              Year:
+            </strong>
+
+            1843
+          </p>
+
+
+          <p>
+            A short horror story about a narrator who becomes
+            obsessed with an old man and tries to convince the
+            reader that he is completely sane.
+          </p>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- --------------------
+           THE STORY OF AN HOUR
+      -------------------- -->
+
+      <section class="book-entry">
+
+        <img
+          src="Books/The Story of an Hour_Cover.png"
+          alt="The Story of an Hour"
+          class="book-cover"
+
+          data-cover="Books/The Story of an Hour_Cover.png"
+          data-page-name="The Story of an Hour_Page"
+          data-pages="1"
+        >
+
+
+        <div class="book-info">
+
+          <h3>
+            The Story of an Hour
+          </h3>
+
+
+          <p>
+            <strong>
+              Author:
+            </strong>
+
+            Kate Chopin
+          </p>
+
+
+          <p>
+            <strong>
+              Year:
+            </strong>
+
+            1894
+          </p>
+
+
+          <p>
+            A short story about a woman who receives unexpected
+            news about her husband and begins to experience a
+            complicated mix of grief, freedom, and emotion.
+          </p>
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       BOOK POPUP WINDOW
+  =================================================== -->
+
+  <div
+    class="art-window book-window"
+    id="bookWindow"
+  >
+
+
+    <!-- --------------------
+         TOP BAR
+    -------------------- -->
+
+    <div
+      class="art-window-bar"
+      id="bookWindowBar"
+    >
+
+      <span id="bookWindowTitle">
+        Book
+      </span>
+
+
+      <div class="window-buttons">
+
+        <button
+          type="button"
+          id="bookRestoreButton"
+          title="Restore window"
+        >
+          ❐
+        </button>
+
+        <button
+          type="button"
+          id="bookFullscreenButton"
+          title="Fullscreen"
+        >
+          □
+        </button>
+
+        <button
+          type="button"
+          id="bookCloseButton"
+          title="Close"
+        >
+          X
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- --------------------
+         BOOK CONTENT
+    -------------------- -->
+
+    <div class="book-window-content">
+
+      <div class="book-page-area">
+
+        <img
+          id="bookPopupImage"
+          src=""
+          alt="Selected book page"
+        >
+
+      </div>
+
+
+
+      <!-- --------------------
+           PAGE CONTROLS
+      -------------------- -->
+
+      <div class="book-page-controls">
+
+        <button
+          type="button"
+          class="page-button"
+          id="previousPageButton"
+          title="Previous page"
+        >
+          &lt;
+        </button>
+
+
+        <div
+          class="page-number"
+          id="pageNumber"
+        >
+          Page 1
+        </div>
+
+
+        <button
+          type="button"
+          class="page-button"
+          id="nextPageButton"
+          title="Next page"
+        >
+          &gt;
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- --------------------
+       CUSTOM SCROLLBAR
+  -------------------- -->
+
+  <div
+    class="scroll-track"
+    id="scrollTrack"
+  >
+
+    <div
+      class="scroll-thumb"
+      id="scrollThumb"
+    ></div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       BOOK READER JAVASCRIPT
+  =================================================== -->
+
+  <script>
+
+    const bookCovers =
+      document.querySelectorAll(
+        ".book-cover"
+      );
+
+
+    const bookWindow =
+      document.getElementById(
+        "bookWindow"
+      );
+
+
+    const bookPopupImage =
+      document.getElementById(
+        "bookPopupImage"
+      );
+
+
+    const bookWindowTitle =
+      document.getElementById(
+        "bookWindowTitle"
+      );
+
+
+    const bookCloseButton =
+      document.getElementById(
+        "bookCloseButton"
+      );
+
+
+    const bookFullscreenButton =
+      document.getElementById(
+        "bookFullscreenButton"
+      );
+
+
+    const bookRestoreButton =
+      document.getElementById(
+        "bookRestoreButton"
+      );
+
+
+    const bookWindowBar =
+      document.getElementById(
+        "bookWindowBar"
+      );
+
+
+    const previousPageButton =
+      document.getElementById(
+        "previousPageButton"
+      );
+
+
+    const nextPageButton =
+      document.getElementById(
+        "nextPageButton"
+      );
+
+
+    const pageNumber =
+      document.getElementById(
+        "pageNumber"
+      );
+
+
+
+    let currentPage = 1;
+
+    let storyPages = 1;
+
+    let totalReaderPages = 1;
+
+    let currentPageName = "";
+
+    let currentCover = "";
+
+
+
+    /* ==================================================
+       SHOW CURRENT PAGE
+    =================================================== */
+
+    function showCurrentPage() {
+
+
+      /* PAGE 1 = COVER */
+
+      if (currentPage === 1) {
+
+        bookPopupImage.src =
+          currentCover;
+
+      }
+
+
+      /* PAGE 2+ = STORY PAGES */
+
+      else {
+
+        const storyPageNumber =
+          currentPage - 1;
+
+
+        bookPopupImage.src =
+          "Books/" +
+          currentPageName +
+          storyPageNumber +
+          ".png";
+
+      }
+
+
+      bookPopupImage.alt =
+        bookWindowTitle.textContent +
+        " page " +
+        currentPage;
+
+
+      pageNumber.textContent =
+        "Page " +
+        currentPage +
+        " of " +
+        totalReaderPages;
+
+
+      previousPageButton.disabled =
+        currentPage === 1;
+
+
+      nextPageButton.disabled =
+        currentPage === totalReaderPages;
+
+    }
+
+
+
+    /* ==================================================
+       OPEN BOOK
+    =================================================== */
+
+    bookCovers.forEach(function (cover) {
+
+      cover.addEventListener(
+        "click",
+        function () {
+
+
+          currentPage = 1;
+
+
+          storyPages =
+            Number(
+              cover.dataset.pages
+            );
+
+
+          totalReaderPages =
+            storyPages + 1;
+
+
+          currentPageName =
+            cover.dataset.pageName;
+
+
+          currentCover =
+            cover.dataset.cover;
+
+
+          bookWindowTitle.textContent =
+            cover.alt;
+
+
+          showCurrentPage();
+
+
+          bookWindow.style.display =
+            "block";
+
+        }
+      );
+
+    });
+
+
+
+    /* ==================================================
+       NEXT PAGE
+    =================================================== */
+
+    nextPageButton.addEventListener(
+      "click",
+      function () {
+
+        if (
+          currentPage <
+          totalReaderPages
+        ) {
+
+          currentPage++;
+
+          showCurrentPage();
+
+        }
+
+      }
+    );
+
+
+
+    /* ==================================================
+       PREVIOUS PAGE
+    =================================================== */
+
+    previousPageButton.addEventListener(
+      "click",
+      function () {
+
+        if (
+          currentPage > 1
+        ) {
+
+          currentPage--;
+
+          showCurrentPage();
+
+        }
+
+      }
+    );
+
+
+
+    /* ==================================================
+       CLOSE
+    =================================================== */
+
+    bookCloseButton.addEventListener(
+      "click",
+      function () {
+
+        bookWindow.style.display =
+          "none";
+
+      }
+    );
+
+
+
+    /* ==================================================
+       FULLSCREEN
+    =================================================== */
+
+    bookFullscreenButton.addEventListener(
+      "click",
+      function () {
+
+        bookWindow.classList.add(
+          "fullscreen"
+        );
+
+      }
+    );
+
+
+
+    /* ==================================================
+       RESTORE
+    =================================================== */
+
+    bookRestoreButton.addEventListener(
+      "click",
+      function () {
+
+        bookWindow.classList.remove(
+          "fullscreen"
+        );
+
+
+        bookWindow.style.width =
+          "500px";
+
+
+        bookWindow.style.height =
+          "auto";
+
+
+        bookWindow.style.top =
+          "100px";
+
+
+        bookWindow.style.left =
+          "100px";
+
+      }
+    );
+
+
+
+    /* ==================================================
+       DRAG WINDOW
+    =================================================== */
+
+    let dragging = false;
+
+    let mouseStartX = 0;
+
+    let mouseStartY = 0;
+
+    let windowStartX = 0;
+
+    let windowStartY = 0;
+
+
+
+    bookWindowBar.addEventListener(
+      "mousedown",
+      function (event) {
+
+
+        if (
+          event.target.tagName ===
+          "BUTTON"
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          bookWindow.classList.contains(
+            "fullscreen"
+          )
+        ) {
+
+          return;
+
+        }
+
+
+        dragging = true;
+
+
+        mouseStartX =
+          event.clientX;
+
+
+        mouseStartY =
+          event.clientY;
+
+
+        windowStartX =
+          bookWindow.offsetLeft;
+
+
+        windowStartY =
+          bookWindow.offsetTop;
+
+      }
+    );
+
+
+
+    document.addEventListener(
+      "mousemove",
+      function (event) {
+
+        if (!dragging) {
+
+          return;
+
+        }
+
+
+        const movementX =
+          event.clientX -
+          mouseStartX;
+
+
+        const movementY =
+          event.clientY -
+          mouseStartY;
+
+
+        bookWindow.style.left =
+          windowStartX +
+          movementX +
+          "px";
+
+
+        bookWindow.style.top =
+          windowStartY +
+          movementY +
+          "px";
+
+      }
+    );
+
+
+
+    document.addEventListener(
+      "mouseup",
+      function () {
+
+        dragging = false;
+
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+
+        if (
+          bookWindow.style.display !==
+          "block"
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          event.key ===
+          "ArrowRight"
+        ) {
+
+          if (
+            currentPage <
+            totalReaderPages
+          ) {
+
+            currentPage++;
+
+            showCurrentPage();
+
+          }
+
+        }
+
+
+        if (
+          event.key ===
+          "ArrowLeft"
+        ) {
+
+          if (
+            currentPage > 1
+          ) {
+
+            currentPage--;
+
+            showCurrentPage();
+
+          }
+
+        }
+
+
+        if (
+          event.key ===
+          "Escape"
+        ) {
+
+          bookWindow.style.display =
+            "none";
+
+        }
+
+      }
+    );
+
+  </script>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
